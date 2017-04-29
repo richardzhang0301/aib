@@ -1066,7 +1066,7 @@ void ThreadMapPort()
 #else
     /* miniupnpc 1.6 */
     int error = 0;
-    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
+    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, 0, &error);
 #endif
 
     struct UPNPUrls urls;
@@ -1227,7 +1227,7 @@ void ThreadDNSAddressSeed()
 
 unsigned int pnSeed[] =
 {
-  0x731C12A3, 0x6C3DBF4D,0x6ABB2717,0x6C3DC20C,0x5E2AFCCB,0x6C3DDDE8  
+  0x731C12A3, 0x6C3DBF4D,0x6ABB2717,0x6C3DC20C,0x5E2AFCCB,0x6C3DDDE8
 };
 
 void DumpAddresses()
