@@ -8,16 +8,19 @@
 
 CXX=llvm-g++
 DEPSDIR=/opt/local
+BOOSTDIR=../../deps/boost_1_59_0
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)"/obj \
  -I"$(DEPSDIR)/include" \
- -I"$(DEPSDIR)/include/db48"
+ -I"$(DEPSDIR)/include/db48" \
+ -I"$(BOOSTDIR)/include"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
- -L"$(DEPSDIR)/lib/db48"
+ -L"$(DEPSDIR)/lib/db48" \
+ -L"$(BOOSTDIR)/lib"
 
 USE_UPNP:=1
 USE_IPV6:=1
@@ -29,14 +32,14 @@ TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 ifdef STATIC
 # Build STATIC if you are redistributing the bitcoind binary
 TESTLIBS += \
- $(DEPSDIR)/lib/libboost_unit_test_framework-mt.a
+ $(DEPSDIR)/lib/libboost_unit_test_framework.a
 LIBS += \
  $(DEPSDIR)/lib/db48/libdb_cxx-4.8.a \
- $(DEPSDIR)/lib/libboost_system-mt.a \
- $(DEPSDIR)/lib/libboost_filesystem-mt.a \
- $(DEPSDIR)/lib/libboost_program_options-mt.a \
- $(DEPSDIR)/lib/libboost_thread-mt.a \
- $(DEPSDIR)/lib/libboost_chrono-mt.a \
+ $(BOOSTDIR)/lib/libboost_system.a \
+ $(BOOSTDIR)/lib/libboost_filesystem.a \
+ $(BOOSTDIR)/lib/libboost_program_options.a \
+ $(BOOSTDIR)/lib/libboost_thread.a \
+ $(BOOSTDIR)/lib/libboost_chrono.a \
  $(DEPSDIR)/lib/libssl.a \
  $(DEPSDIR)/lib/libcrypto.a \
  -lz
